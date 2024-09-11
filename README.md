@@ -183,6 +183,39 @@ Following dependencies are added for configure security features,
 
 After adding above dependencies , a secret is generated for the token and it is stored in the 'Application.properties' file. In that file token expiration time is also added in milli seconds. In this case it was set to 86400000 ms. 
 
+To form a security layer, a directory 'security' is created. Inside that directory , a classes called 'UserDetailsService' , 'WebSecurityConfig' and a directory called 'jwt' is created.
+
+In side the directory 'jwt' , following classes are created,
+- AuthEntryPoint
+- AuthTokenFilter
+- JwtUtils
+
+For every class in 'jwt' directory, annotaion '@Component' is added, so that they are marked as components.
+
+Inside the JwtUtils class, both secret and expiration time are added as fields. In that class, following methods are included,
+
+- A method to generate a key using the secret.
+- A method to generate  a JwtToken.
+- A method to validate jwtToken
+
+Inside 'AuthEntryPoint' class, a method is added to verify whether a user is authorized or not.
+
+Inside 'AuthTokenFilter' , methods are added to filter user requests.
+
+Inside 'UserDetailsService' class, a method is added which returns an object of the user who is trying to send API requests after authentication is completed.
+
+In 'WebSecurityConfig' class annotations '@Configuration','@EnableWebSecurity' annotations are added. 
+
+@Configuration marks WebSecurityConfig class as configuration class for security settings.
+
+@EnableWebSecurity enables Spring Security's ability to enforce security at the method level. This feature is use full when securing individual service or controller methods based on user roles or permissions.
+
+After configuring all the classes in security layer, 'AuthController' class is added in controller layer, which allows user to get authorized by registering and logging. 
+
+At the registering phase, user password is stored in the database as an encrypted code avoiding any exploitations of password. 
+
+After successful logging, user is given a token which should be attached with all the API requests which require an authentication.
+
 
 
 
