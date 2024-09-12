@@ -76,6 +76,7 @@ public class WebSecurityConfig {
                                 .requestMatchers("/items/serial/{serialNumber}").permitAll()
                                 .requestMatchers("/create/order").permitAll()
                                 .requestMatchers("/orders/today").permitAll()
+                                .requestMatchers("/sales/today").permitAll()
                                 .anyRequest().authenticated()
                         );
 

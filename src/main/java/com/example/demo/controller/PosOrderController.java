@@ -95,4 +95,18 @@ public class PosOrderController {
             return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());
         }
     }
+
+    @GetMapping("/sales/today")
+    public ResponseEntity<?> getAverageSalesOnCurrentDay(){
+        LocalDateTime today=LocalDateTime.now().toLocalDate().atStartOfDay();
+        LocalDateTime nexDay=today.plusDays(1).minusSeconds(1);
+
+        try{
+            double currentDaySales=posOrderService.getAverageSalesOnCurrentDay(today,nexDay);
+
+            return ResponseEntity.status(HttpStatus.OK).body(currentDaySales);
+        }catch (Exception e){
+            return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());
+        }
+    }
 }

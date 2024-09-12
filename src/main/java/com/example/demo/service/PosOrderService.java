@@ -27,4 +27,8 @@ public interface PosOrderService {
 
     //Get all the orders made on current day
     int getOrdersOnCurrentDay(LocalDateTime startOfDay,LocalDateTime endOfDay);
+
+    //Get average sales value per day
+    double getAverageSalesOnCurrentDay(LocalDateTime startOfDay,LocalDateTime endOfDay);
+
 }

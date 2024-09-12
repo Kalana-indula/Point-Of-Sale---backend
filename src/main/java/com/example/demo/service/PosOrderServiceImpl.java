@@ -125,6 +125,19 @@ public class PosOrderServiceImpl implements PosOrderService{
         return numberOfOrders;
     }
 
+    @Override
+    public double getAverageSalesOnCurrentDay(LocalDateTime startOfDay, LocalDateTime endOfDay) {
+        List<PosOrder> currentDayOrders=posOrderRepository.findPosOrderByOrderDate(startOfDay,endOfDay);
+
+        double currentSalesValue=0.0;
+
+        for(PosOrder order:currentDayOrders){
+            currentSalesValue+=order.getTotal();
+        }
+
+        return currentSalesValue;
+    }
+
 
     //Reduce order stock from current stock
     private void setItemStockStates(Item item){
