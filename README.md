@@ -17,7 +17,7 @@ In here authentication features has been added , using **Spring Security**
 
 Following images shows the appearance of the UI of the app. UI was designed using **react** .
 
-![image](https://github.com/user-attachments/assets/f5e1455f-b074-45f0-93af-5f2b479aad8d)
+![image](https://github.com/user-attachments/assets/f4dce9fb-cd65-4f03-bd12-b8dc6213adde)
 
 ![image](https://github.com/user-attachments/assets/3ee2e0b9-534c-495f-b616-1e741f51141b)
 
