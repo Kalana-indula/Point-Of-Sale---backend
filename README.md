@@ -25,6 +25,8 @@ Following images shows the appearance of the UI of the app. UI was designed usin
 
 ![image](https://github.com/user-attachments/assets/b38372e6-a614-4a57-9b29-9c6680b6132e)
 
+### Front-end link :- https://github.com/Kalana-indula/Point-Of-Sale-frontend.git
+
 ## Development of back end
 
 The back end of this application was designed using **springboot** a popular java framework for back end development with layered architecture. 
