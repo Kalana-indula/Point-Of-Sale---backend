@@ -32,7 +32,7 @@ public class Item {
     private ItemCategory itemCategory;
 
     @JsonIgnore
-    @OneToOne(mappedBy = "item",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "item",cascade = CascadeType.ALL,fetch = FetchType.LAZY,orphanRemoval = true)
     private Stock stock;
 
     @JsonIgnore

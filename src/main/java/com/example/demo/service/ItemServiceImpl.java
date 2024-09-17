@@ -3,6 +3,7 @@ package com.example.demo.service;
 import com.example.demo.dto.ItemDto;
 import com.example.demo.entity.Item;
 import com.example.demo.entity.ItemCategory;
+import com.example.demo.entity.PosOrder;
 import com.example.demo.entity.Stock;
 import com.example.demo.repository.ItemCategoryRepository;
 import com.example.demo.repository.ItemRepository;
@@ -102,13 +103,21 @@ public class ItemServiceImpl implements ItemService{
     @Override
     public String deleteItem(Long id) {
 
-        Boolean isExists=itemRepository.existsById(id);
 
-        if(isExists){
-            itemRepository.deleteById(id);
+        Item item=itemRepository.findById(id).orElse(null);
+
+        if(item!=null){
+            //Delete item from all orders
+            for(PosOrder order:item.getOrders()){
+                order.getItems().remove(item);
+            }
+
+            itemRepository.delete(item);
+
             return "Item Deleted Successfully";
         }else{
-            return "No Item Found For The Corresponding Id";
+            return "Item Not Found";
         }
+
     }
 }
